@@ -1,0 +1,131 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>Admin Dashboard</title>
+    <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.3/dist/css/bootstrap.min.css">
+    <link rel="stylesheet" href="{{ url_for('static', filename='css/style.css') }}">
+</head>
+</head>
+<body>
+
+<!-- NAVBAR -->
+<nav class="navbar navbar-expand-lg custom-navbar">
+        <div class="container">
+            <a class="navbar-brand" href="/">AgriCarbonX</a>
+            <button class="navbar-toggler bg-light" type="button" data-bs-toggle="collapse" 
+                    data-bs-target="#navbarNav" aria-controls="navbarNav" aria-expanded="false"
+                    aria-label="Toggle navigation">
+                <span class="navbar-toggler-icon"></span>
+            </button>
+
+            <div class="collapse navbar-collapse" id="navbarNav">
+                <ul class="navbar-nav ms-auto">
+                    <li class="nav-item"><a class="nav-link" href="/dashboard">Dashboard</a></li>
+                    <li class="nav-item"><a class="nav-link" href="/farmer_form">Registration</a></li>
+                    <li class="nav-item"><a class="nav-link" href="/marketplace">Marketplace</a></li>
+                    <li class="nav-item"><a class="nav-link" href="/">Log out</a></li>
+                </ul>
+            </div>
+        </div>
+    </nav>
+
+<div class="container py-4">
+
+    <!-- TOP CARDS -->
+    <div class="row mb-4">
+    <div class="col-md-4">
+        <div class="card p-3 text-center">
+            <h5>Total Farmers</h5>
+            <h2>{{ total_farmers }}</h2>
+        </div>
+    </div>
+
+    <div class="col-md-4">
+        <div class="card p-3 text-center">
+            <h5>Total Credits</h5>
+            <h2>{{ total_credits }}</h2>
+        </div>
+    </div>
+
+    <div class="col-md-4">
+        <div class="card p-3 text-center">
+            <h5>Total Value (₹)</h5>
+            <h2>{{ total_value }}</h2>
+        </div>
+    </div>
+</div>
+
+
+    <!-- Registered Farmers Table -->
+    <h4>Registered Farmers</h4>
+<table class="table table-bordered table-hover">
+    <thead class="table-dark">
+        <tr>
+            <th>ID</th>
+            <th>Name</th>
+            <th>Village</th>
+            <th>Farm Size</th>
+            <th>Trees</th>
+            <th>Organic</th>
+            <th>Credits</th>
+            <th>CO₂ Saved</th>
+            <th>Value (₹)</th>
+        </tr>
+    </thead>
+    <tbody>
+        {% for f in farmers %}
+        <tr>
+            <td>{{ f.id }}</td>
+            <td>{{ f.name }}</td>
+            <td>{{ f.village }}</td>
+            <td>{{ f.farm_size }} acres</td>
+            <td>{{ f.trees }}</td>
+            <td>{{ f.organic }}</td>
+            <td>{{ f.credits }}</td>
+            <td>{{ f.co2_saved }}</td>
+            <td>{{ f.value }}</td>
+        </tr>
+        {% endfor %}
+    </tbody>
+</table>
+
+    <!-- Marketplace Listings -->
+    
+
+    <!-- Recent Transactions -->
+    <div class="table-container mt-5">
+    <h4>Recent Transactions</h4>
+    <table class="table table-bordered table-hover">
+        <thead class="table-dark">
+            <tr>
+                <th>ID</th>
+                <th>Farmer Name</th>
+                <th>Credits Earned</th>
+                <th>Credits Used</th>
+                <th>Remarks</th>
+                <th>Date</th>
+            </tr>
+        </thead>
+        <!-- Inside Recent Transactions Table -->
+<tbody>
+    {% for t in transactions %}
+    <tr>
+        <td>{{ t.id }}</td>
+        <td>{{ t.farmer_name }}</td>
+        <td>{{ t.credits_earned }}</td>
+        <td>{{ t.credits_used }}</td>
+        <td>{{ t.remarks }}</td>
+        <td>{{ t.created_at }}</td>
+    </tr>
+    {% endfor %}
+</tbody>
+
+    </table>
+</div>
+
+
+</div>
+
+</body>
+</html>

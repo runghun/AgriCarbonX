@@ -1,0 +1,148 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>AgriCarbonX Login</title>
+    <script src="https://cdn.tailwindcss.com"></script>
+    <link href="https://fonts.googleapis.com/css2?family=Inter:wght@100..900&display=swap" rel="stylesheet">
+    <script>
+        tailwind.config = {
+            theme: {
+                extend: {
+                    fontFamily: {
+                        sans: ['Inter', 'sans-serif'],
+                    },
+                    colors: {
+                        'primary-green': '#10B981', // A nice emerald green for emphasis
+                        'background':'white'       // Slate-900 for the body background
+                    }
+                }
+            }
+        }
+    </script>
+    <style>
+        /* Custom styles for abstract background */
+        .abstract-bg {
+            background-color: #2E8B57;
+            position: relative;
+            overflow: hidden;
+        }
+        .abstract-bg::before {
+            content: '';
+            position: absolute;
+            top: 0;
+            left: 0;
+            width: 100%;
+            height: 100%;
+            background-image: radial-gradient(circle at 10% 10%, rgba(255, 255, 255, 0.1) 1px, transparent 0),
+                              radial-gradient(circle at 90% 90%, rgba(255, 255, 255, 0.1) 1px, transparent 0);
+            background-size: 20px 20px;
+            opacity: 0.5;
+        }
+        .custom-navbar {
+            background-color: #1f5f3f; 
+            position: fixed;
+            width: 100%;
+            z-index: 10;
+        }
+        .login-container {
+            min-height: 100vh;
+            padding-top: 6rem;
+        }
+    </style>
+</head>
+
+<body class="bg-dark-bg font-sans">
+
+    <nav class="custom-navbar shadow-lg">
+        <div class="container mx-auto px-4 sm:px-6 lg:px-8 flex justify-between items-center h-16">
+            <a class="text-xl font-bold text-white hover:text-primary-green transition duration-300" href="/">AgriCarbonX</a>
+            
+            <button class="sm:hidden text-white" id="menu-button" aria-label="Toggle navigation">
+                <svg class="w-6 h-6" fill="none" stroke="currentColor" viewBox="0 0 24 24" xmlns="http://www.w3.org/2000/svg"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M4 6h16M4 12h16m-7 6h7"></path></svg>
+            </button>
+
+            <div class="hidden sm:flex sm:items-center" id="navbar-links">
+                <ul class="flex space-x-6">
+                    <li><a class="text-white hover:text-primary-green transition duration-300 nav-link" href="/">Home</a></li>
+                    <li><a class="text-primary-green font-semibold nav-link" href="/login">Login</a></li>
+                    <li><a class="text-white hover:text-primary-green transition duration-300 nav-link" href="/about">About</a></li>
+                </ul>
+            </div>
+        </div>
+        
+        <div class="sm:hidden hidden bg-slate-800 pb-2" id="mobile-menu">
+            <a href="/" class="block px-4 py-2 text-white hover:bg-slate-700">Home</a>
+            <a href="/login" class="block px-4 py-2 text-primary-green font-semibold bg-slate-700">Login</a>
+            <a href="/about" class="block px-4 py-2 text-white hover:bg-slate-700">About</a>
+        </div>
+    </nav>
+    <div class="login-container flex flex-col justify-center items-center p-4">
+        
+        <div class="w-full max-w-4xl bg-white shadow-2xl rounded-3xl overflow-hidden flex flex-col sm:flex-row min-h-[500px]">
+            
+            <div class="abstract-bg w-full sm:w-1/2 p-8 lg:p-12 flex flex-col justify-center items-center text-center">
+                <h1 class="text-4xl lg:text-5xl font-extrabold text-white mb-4 z-10">Welcome to AgriCarbonX</h1>
+                <p class="text-indigo-200 text-lg lg:text-xl z-10">
+                    Join us in fostering sustainable agriculture and driving carbon neutrality through data and technology.
+                </p>
+                <svg class="w-32 h-32 mt-8 opacity-70" viewBox="0 0 24 24" fill="none" xmlns="http://www.w3.org/2000/svg">
+                    <path d="M12 2C6.48 2 2 6.48 2 12C2 17.52 6.48 22 12 22C17.52 22 22 17.52 22 12C22 6.48 17.52 2 12 2ZM12 20C7.58 20 4 16.42 4 12C4 7.58 7.58 4 12 4C16.42 4 20 7.58 20 12C20 16.42 16.42 20 12 20Z" fill="url(#gradient-sphere)"/>
+                    <path d="M15.5 10.5C15.5 11.3284 14.8284 12 14 12H10V14H14C15.933 14 17.5 12.433 17.5 10.5C17.5 8.56701 15.933 7 14 7H9C7.34315 7 6 8.34315 6 10V14.5C6 16.433 7.56701 18 9.5 18H16" stroke="#fff" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"/>
+                    <defs>
+                        <linearGradient id="gradient-sphere" x1="2" y1="2" x2="22" y2="22" gradientUnits="userSpaceOnUse">
+                            <stop stop-color="#FDBA74"/>
+                            <stop offset="1" stop-color="#F472B6"/>
+                        </linearGradient>
+                    </defs>
+                </svg>
+            </div>
+
+            <div class="w-full sm:w-1/2 p-8 lg:p-12 flex flex-col justify-center">
+                <h3 class="text-3xl font-bold text-slate-800 mb-6 text-center">User Login</h3>
+
+                
+
+                <form method="POST" class="space-y-6">
+                    
+                    <div>
+                        <label for="username" class="block text-sm font-medium text-slate-700 mb-1">Username</label>
+                        <input type="text" name="username" id="username" required
+                               class="w-full px-4 py-3 border border-slate-300 rounded-xl shadow-sm focus:border-primary-green focus:ring-1 focus:ring-primary-green outline-none transition duration-150"
+                               placeholder="Enter your username">
+                    </div>
+
+                    <div>
+                        <label for="password" class="block text-sm font-medium text-slate-700 mb-1">Password</label>
+                        <input type="password" name="password" id="password" required
+                               class="w-full px-4 py-3 border border-slate-300 rounded-xl shadow-sm focus:border-primary-green focus:ring-1 focus:ring-primary-green outline-none transition duration-150"
+                               placeholder="••••••••">
+                    </div>
+                    
+                    <div class="text-right">
+                        <a href="/password" class="text-sm font-medium text-primary-green hover:text-green-700">Forgot password?</a>
+                    </div>
+
+                    <button type="submit"
+                            class="w-full py-3 bg-primary-green text-white font-semibold text-lg rounded-xl shadow-lg shadow-green-500/50 hover:bg-green-600 transition duration-300 transform hover:scale-[1.01]">
+                        Login
+                    </button>
+                </form>
+
+            </div>
+            
+        </div>
+    </div>
+
+    <script>
+        const menuButton = document.getElementById('menu-button');
+        const mobileMenu = document.getElementById('mobile-menu');
+
+        menuButton.addEventListener('click', () => {
+            mobileMenu.classList.toggle('hidden');
+        });
+    </script>
+
+</body>
+</html>
