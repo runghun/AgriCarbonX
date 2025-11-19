@@ -130,14 +130,16 @@ Creating a simple interface for rural users with low digital literacy required c
 
 6. Slow Verification Process
 
-## Team Member ##
-  Shweta Kumari
-  Shweta Kumari
-  Samriddhi Sharma
-  P.Chaitanya 
+
 
 Initial verification workflows were slow and required backend optimization.
 
 7. Ensuring Transparency & Avoiding Fraud
 
 We had to prevent duplicate or fake carbon claims in the system.
+
+## Team Member ##
+  Shweta Kumari
+  Shweta Kumari
+  Samriddhi Sharma
+  P.Chaitanya 
